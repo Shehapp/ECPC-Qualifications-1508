@@ -1,0 +1,73 @@
+#include <bits/stdc++.h>
+#define ll long long
+#define unl unsigned long long
+#define lol ios::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
+#define fa(i, a, n) for(int (i) = (a); (i) < (n); (i)++)
+#define output(v) for(auto&it:v){cout<<it<<" ";}cout<<"\n"
+#define input(v) for(auto&it:v){cin>>it;}
+#define en '\n'
+#define pb push_back
+#define all(s) s.begin(),s.end()
+#define rall(s) s.rbegin(),s.rend()
+#define se second
+#define fi first
+#define tc void tc_sol(){int tc; cin>>tc;while(tc--){sol();cout<<en;}}
+#define dot(n)  fixed << setprecision(n)
+//a=>97 z=>122 A=>65 Z=>90
+ll MOD=1000000007;
+using namespace std;
+int n,m;
+map<int,bool>vis;
+map<int,vector<int>>adj;
+ll sum=0;
+ll ar[100005];
+int now=0;
+priority_queue<pair<ll,ll>>xz;
+void dfs(int c){
+    vis[c]=1;
+    sum+=ar[c];
+    now++;
+    for(auto i:adj[c]){
+        if(!vis[i]){
+            dfs(i);
+        }
+    }
+}
+void sol() {
+ cin>>n>>m;
+ fa(i,1,n+1)cin>>ar[i];
+ fa(i,0,m){
+     int u,v; cin>>u>>v;
+     adj[u].push_back(v);
+     adj[v].pb(u);
+ }
+fa(i,1,n+1){
+     if(vis[i])continue;
+     dfs(i);
+     xz.push({now,sum});
+     now=0;sum=0;
+ }
+ ll k=xz.top().second;
+ xz.pop();
+ if(xz.size()){
+ k+=xz.top().second;
+ xz.pop();
+ }
+ ll f=0;
+    if(xz.size()){
+        f+=xz.top().second;}
+    if(k>f)cout<<"yes";
+    else cout<<"no";
+    cout<<en<<k<<" "<<f;
+
+
+
+}
+
+
+
+tc int  main()
+{
+
+    sol();
+}
