@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+#define ll long long
+#define unl unsigned long long
+#define lol ios::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
+#define fa(i, a, n) for(int (i) = (a); (i) < (n); (i)++)
+#define output(v) for(auto&it:v){cout<<it<<" ";}cout<<"\n"
+#define input(v) for(auto&it:v){cin>>it;}
+#define en '\n'
+#define pb push_back
+#define all(s) s.begin(),s.end()
+#define rall(s) s.rbegin(),s.rend()
+#define se second
+#define fi first
+#define tc void tc_sol(){int tc; cin>>tc;while(tc--){sol();cout<<en;}}
+#define dot(n)  fixed << setprecision(n)
+//a=>97 z=>122 A=>65 Z=>90
+ll MOD=1000000007;
+using namespace std;
+vector<ll>s;
+tc int  main()
+{
+  bool b[10000000];
+    memset(b, true,sizeof b);
+    b[0]=b[1]= false;
+    for(int y=2;y*y<=10000000;y++){
+
+        if(b[y]){
+            s.push_back(y);
+            for(int f=y*y;f<=10000000;f+=y){
+                b[f]= false;
+            }
+        }
+
+    }
+    int tt; cin>>tt;
+    while(tt--){
+    ll n; cin>>n;
+    n= floor(sqrt(n));
+    if(*lower_bound(all(s), n)==n)
+        cout<<lower_bound(all(s), n)-s.begin()+1<<en;
+    else
+        cout<<lower_bound(all(s), n)-s.begin()<<en;
+
+}}
