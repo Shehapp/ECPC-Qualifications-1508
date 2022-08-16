@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+#define ll long long
+#define unl unsigned long long
+#define lol ios::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
+#define fa(i, a, n) for(int (i) = (a); (i) < (n); (i)++)
+#define output(v) for(auto&it:v){cout<<it<<" ";}cout<<"\n"
+#define input(v) for(auto&it:v){cin>>it;}
+#define en '\n'
+#define pb push_back
+#define all(s) s.begin(),s.end()
+#define rall(s) s.rbegin(),s.rend()
+#define se second
+#define fi first
+#define tc void tc_sol(){int tc; cin>>tc;while(tc--){sol();cout<<en;}}
+#define dot(n)  fixed << setprecision(n)
+//a=>97 z=>122 A=>65 Z=>90
+ll MOD=1000000007;
+using namespace std;
+void sol() {
+int a,b;
+cin>>a>>b;
+if(a>b)cout<<"YES";
+else cout<<"NO";
+
+
+}
+tc int  main()
+{
+    lol
+    tc_sol();
+}
