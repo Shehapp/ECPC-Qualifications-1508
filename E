@@ -58,7 +58,6 @@ fa(i,1,n+1){
         f+=xz.top().second;}
     if(k>f)cout<<"yes";
     else cout<<"no";
-    cout<<en<<k<<" "<<f;
 
 
 
