@@ -1,0 +1,85 @@
+//thx Mhmd Ahmed
+
+#include <bits/stdc++.h>
+#define ll long long
+#include <cstdlib>
+#include <iostream>
+#include <vector>
+#include <cstring>
+#include <cassert>
+#include <cstdio>
+#include <algorithm>
+#define unl unsigned long long
+#define lol ios::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
+#define fa(i, a, n) for(int (i) = (a); (i) < (n); (i)++)
+#define output(v) for(auto&it:v){cout<<it<<" ";}cout<<"\n"
+#define input(v) for(auto&it:v){cin>>it;}
+#define en '\n'
+#define pb push_back
+#define all(s) s.begin(),s.end()
+#define rall(s) s.rbegin(),s.rend()
+#define se second
+#define fi first
+#define tc void tc_sol(){int tc; cin>>tc;while(tc--){sol();cout<<en;}}
+#define dot(n)  fixed << setprecision(n)
+//a=>97 z=>122 A=>65 Z=>90
+ll MOD=1000000007;
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace std;
+using namespace __gnu_pbds;
+//                         for multiset less_equal
+#define ordered_set tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
+void sol() {
+int n,m; cin>>n>>m;
+int ar[n][m];
+vector<int>x,y;
+fa(i,1,n+1){
+    fa(j,1,m+1){
+    cin>>ar[i][j];
+    if(ar[i][j]==1){
+        x.pb(i);y.pb(j);
+    }
+    }
+}
+int pre[x.size()],prey[y.size()];
+sort(all(x));
+    sort(all(y));
+pre[0]=x[0];
+prey[0]=y[0];
+fa(i,1,y.size()){
+    pre[i]=pre[i-1]+x[i];
+    prey[i]=prey[i-1]+y[i];
+}
+ll me=10e9;
+int x1,y1;
+    fa(i,1,n+1){
+        fa(j,1,m+1){
+            int h1= upper_bound(all(x),i)-x.begin();
+            int h2= upper_bound(all(y),j)-y.begin();
+
+            /*
+             (i*h1-pre[i-1])+((pre[x.size()-1]-pre[i-1])*(x.size()-(h1*i)))
+             (j*h2-prey[j-1])+((prey[x.size()-1]-prey[j-1])*(x.size()-(h2*j)))
+
+             */
+
+
+            ll sumx= (i*h1-pre[h1-1])+((pre[x.size()-1]-pre[h1-1])-((x.size()-h1)*i));
+
+            ll sumy=(j*h2-prey[h2-1])+((prey[y.size()-1]-prey[h2-1])-((y.size()-h2)*j));
+            if(me>sumx+sumy) {
+                x1 = i, y1 = j;
+                me=sumx+sumy;
+            }
+
+        }
+    }
+cout<<x1<<" "<<y1;
+
+}
+tc int  main()
+{
+lol
+sol();
+}
